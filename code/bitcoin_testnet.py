@@ -29,13 +29,11 @@ print(f"{address} has balance: {btc_bal}")
 
 # writing `wbbz74` into the blockchain!
 # the script we pass to the transaction should be hex encoded of a suitable script in order to create a proof-of-burn transaction with student ID in it
-ID_BYTES = "wbbz74".encode('ascii')
-ID_TEXT = ID_BYTES.hex()
+ID_ASCII = "wbbz74".encode('ascii').hex()
 OP_RETURN = "6a" # return, so we create a NULL transaction
 OP_PUSHDATA1 = "06" # the number of bytes we will push to the stack
-script = OP_RETURN + OP_PUSHDATA1 + ID_TEXT # hex encoded transaction
-
-assert False
+script = OP_RETURN + OP_PUSHDATA1 + ID_ASCII # hex encoded transaction
+print("script hex:",script)
 
 inputs = [{'address': 'mjLjznCbyKuGJ5xuz7Wo1Es3qXHoxoDXgo'}]
 outputs = [{'value' : 0, 'script_type':"null-data", 'script':script}]

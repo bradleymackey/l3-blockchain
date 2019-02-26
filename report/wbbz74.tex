@@ -95,13 +95,13 @@ Hashed = SHA256(SK($G$)) = \texttt{\seqsplit{de9734e60820253cc47281d56b3e9c20d74
 \item User ID: \texttt{wbbz74}
 \item 
 \begin{enumerate}
-\item trans 1 lnk
-\item trans 2 lnk
-\item trans 3 lnk
+\item \url{https://www.blockchain.com/btc/tx/cfe6cc5158f435f59c4daa24f66378ff56baf2980d04c92612e2adf222bb19b8}
+\item \url{https://www.blockchain.com/btc/tx/348e8846eccca909c67eade94b3df0c84ab07133159b25759f4b3cac303904ec}
+\item \url{https://www.blockchain.com/btc/tx/f3d7d00d0534fd7d59fb1cb4311dad4e42fef1b6174321342a9ed2af21d9bd25}
 \end{enumerate}
 \item 
 \begin{enumerate}
-\item trans 1
+\item This is a transaction with 2 inputs and 3 outputs. One of the outputs is a basic zero-value data transaction, making use of the \texttt{OP\_RETURN} word to ensure the output can never be redeemed. The 2 inputs, as well as the 2 remaining outputs, use a Pay-to-Public-Key Hash (P2PKH) scheme for transferring coins---this can be identified as all the addresses begin with the number \texttt{1}. The inputs prove to the blockchain they are in control of the private keys associated with the previous transaction that sent them the coins by providing a signature---derived from their private key---and their public key. At the end of execution of the script, if the signatures are valid, the stack terminates with \texttt{TRUE}. This allows the inputs to be sent successfully. The recipients, also using P2PKH, provide a script which will allow them to later redeem coins in a transaction block, given they are in posession of the private key for the recipient address. This script is of the form \texttt{OP\_DUP} \texttt{OP\_HASH160} \textit{hashedPublicKey} \texttt{OP\_EQUALVERIFY} \texttt{OP\_CHECKSIG}.
 \item trans 2
 \item trans 3
 \end{enumerate}
@@ -119,8 +119,8 @@ Hashed = SHA256(SK($G$)) = \texttt{\seqsplit{de9734e60820253cc47281d56b3e9c20d74
 \item \textbf{\textit{Student ID Proof-of-Burn Script}}\\
 \textit{Script Hex}: \texttt{6a067762627a3734}\\
 We can add data to the blockchain by immediately invalidating the script, allowing the remainder of the script to be interpreted as pure data.
-The first byte, \texttt{6a}, is the \texttt{OP\_RETURN} word. This actually invalidates the script, so the remainder of the script is not treated as a transaction.
-The next byte, \text{06}, is the number of bytes that we will push onto the stack next---``wbbz74'' is 6 characters long (6 bytes when ASCII encoded), so this is just 6. 
+The first byte, \texttt{6a}, is the \texttt{OP\_RETURN} word. This invalidates the script, such that any attempt to redeem any Bitcoins contained in this transaction would instantly fail, as per the semantics of Bitcoin Script (therefore this is a very bad script to use if actually sending bitcoins!).
+The next byte, \texttt{06}, is the number of bytes that we will push onto the stack next---``wbbz74'' is 6 characters long (6 bytes when ASCII encoded), so this is just 6. 
 The remainder of the script, \texttt{7762627a3734}, is the ASCII encoded ``wbbz74'', which will be interpreted on the blockchain as pure data.
 
 \end{enumerate}
