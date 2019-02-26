@@ -15,6 +15,16 @@
 \usepackage{titling}
 \usepackage{setspace}
 \renewcommand{\baselinestretch}{1.2} 
+\usepackage{hyperref}
+\usepackage{seqsplit}
+
+\expandafter\def\expandafter\UrlBreaks\expandafter{\UrlBreaks%  save the current one
+  \do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j%
+  \do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t%
+  \do\u\do\v\do\w\do\x\do\y\do\z\do\A\do\B\do\C\do\D%
+  \do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M\do\N%
+  \do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X%
+  \do\Y\do\Z}
 
 \graphicspath{ {./images/} }
 
@@ -34,12 +44,14 @@
 \author{Bradley Mackey}
 \maketitle
 
+Please be aware some of the hashes character wrap in strange ways---do not miss the odd wrapped character on the next line.
+
 
 \section*{Task 1 - Mining Puzzles}
 
 \begin{enumerate}
 \item \textit{User ID}: \texttt{wbbz74}
-\item \textit{Block hash target}: 000003e7fc180000000000000000000000000000000000000000000000000000
+\item \textit{Block hash target}: \texttt{\seqsplit{000003e7fc180000000000000000000000000000000000000000000000000000}}
 \item \textit{Valid nonce}: \texttt{3856645}
 \item \textit{Number of double hashes}: \texttt{3856645}\\\textit{Time taken}: 103.41s
 \item 
@@ -51,30 +63,29 @@ $\implies \frac{1723.5}{60}=28.72$ hours.\\
 \\
 \textit{Time to mine at peak 2018 difficulty of $7,454,968,648,263$}\\
 $D=7454968648263 \implies 103.41\times{\frac{7454968648263}{0.001}}=7.70918\times10^{14}$ seconds\\
-$\implies \frac{103410}{60\times60\times24}=8.92266\times10^{9}$ days\\
-$\implies \frac{8922665600.88}{365.25}=24,428,927.04$ years\\
+$\implies \frac{7.70918\times10^{14}}{60\times60\times24}=8.92266\times10^{9}$ days\\
+$\implies \frac{8.92266\times10^{9}}{365.25}=24,428,927.04$ years\\
 $\implies \frac{24428927.04}{1000}=24,428.9$ millenia.\\
 
-\item \textit{ECDSA Public Key}: 14afbb92502c9294f19be099ac3fe51f8ea1c943e36a06c43b096864d8871\\
-45b55e87f1a01b1b9275bcc9d528a2829a774ec6de06dfaed72933ced851105f3ba
+\item \textit{ECDSA Public Key}: \texttt{\seqsplit{14afbb92502c9294f19be099ac3fe51f8ea1c943e36a06c43b096864d887145b55e87f1a01b1b9275bcc9d528a2829a774ec6de06dfaed72933ced851105f3ba}}
 
-\item \textit{Hello World Signature}: acd855318df6ebb70e4c956caad1c7df1a3395c2ead557e6ec304ced9\\ 038037aa83e79ab1bb80ca3b912ea2806c67cc387301f1530e730834bb3213cf55b70d6
+\item \textit{Hello World Signature}: \texttt{\seqsplit{acd855318df6ebb70e4c956caad1c7df1a3395c2ead557e6ec304ced9038037aa83e79ab1bb80ca3b912ea2806c67cc387301f1530e730834bb3213cf55b70d6}}
 
-\item \textit{Signing Key ($SK$)}: f3fdb06bc3e08e4d97849c7a599d78d5991a629cd446ecef25f8ec7a80adc657
+\item \textit{Signing Key ($SK$)}: \texttt{\seqsplit{f3fdb06bc3e08e4d97849c7a599d78d5991a629cd446ecef25f8ec7a80adc657}}
 
-\item \textit{Hit Value}:\\
+% WAIT FOR MAGNUS
+\item \textbf{\textit{Hit Value}}\\
 Effective balance ($E$) = 74\\
 Base target ($T_B$) = 1229782938247303 (from prev. block)\\
-Time since last block ($t$) = 1385656125\\
-New Target = $E\times T_B\times t=$ 684ebf8cccccc24519a66e\\
-Previous generation signature ($G$) = 9737957703d4eb54efdff91e15343266123c5f15aaf033\\
-292c9903015af817f1\\
-Signed $G$ = SK($G$) = aa084cddc3d64a4425af1c1b6e4c41c0b9dd60176e41b7134bc3eb87de\\
-25f9411f83eddd7031f7048a47c5d0bfc4fdf268d6c7fd4eb41f72e65933ba8c453008\\
-Hashed = SHA256(SK($G$)) = de9734e60820253cc47281d56b3e9c20d749c34f353e497000e8238eaa45cd55\\
+Time since last block ($t$) = 60 (Nxt block time is 1 min)\\
+New Target = $E\times T_B\times t=$ \texttt{684ebf8cccccc24519a66e}\\
+Previous generation signature ($G$) = \texttt{\seqsplit{9737957703d4eb54efdff91e15343266123c5f15aaf033292c9903015af817f1}}\\
+Signed $G$ = SK($G$) = \texttt{\seqsplit{aa084cddc3d64a4425af1c1b6e4c41c0b9dd60176e41b7134bc3eb87de25f9411f83eddd7031f7048a47c5d0bfc4fdf268d6c7fd4eb41f72e65933ba8c453008}}\\
+Hashed = SHA256(SK($G$)) = \texttt{\seqsplit{de9734e60820253cc47281d56b3e9c20d749c34f353e497000e8238eaa45cd55}}\\
 \textbf{Hit Value} = de9734e60820253c
 
-\item 
+% WAIT FOR MAGNUS
+\item \textbf{\textit{Time to forge new block}}
 
 \end{enumerate}
 
@@ -82,6 +93,36 @@ Hashed = SHA256(SK($G$)) = de9734e60820253cc47281d56b3e9c20d749c34f353e497000e82
 
 \begin{enumerate}
 \item User ID: \texttt{wbbz74}
+\item 
+\begin{enumerate}
+\item trans 1 lnk
+\item trans 2 lnk
+\item trans 3 lnk
+\end{enumerate}
+\item 
+\begin{enumerate}
+\item trans 1
+\item trans 2
+\item trans 3
+\end{enumerate}
+
+\item \textit{Bitcoin Testnet Address}: mjLjznCbyKuGJ5xuz7Wo1Es3qXHoxoDXgo
+
+\item \textbf{\textit{100 Satoshi Transaction}}\\
+\textit{TX ID}: \texttt{\seqsplit{74b5486e061ac680cde0f132b0dec6c5010d2dee8da3a2856d680fcf5bf41c37}}\\
+\textit{Link}: \url{https://chain.so/tx/BTCTEST/74b5486e061ac680cde0f132b0dec6c5010d2dee8da3a2856d680fcf5bf41c37}
+
+\item \textbf{\textit{Student ID Proof-of-Burn Transaction}}\\
+\textit{TX ID}: \texttt{\seqsplit{bd1c2552fc0effda71e4e09137d8106aa6c67239dfba1e760040d1c78b66e0ac}}\\
+\textit{Link}: \url{https://chain.so/tx/BTCTEST/bd1c2552fc0effda71e4e09137d8106aa6c67239dfba1e760040d1c78b66e0ac}
+
+\item \textbf{\textit{Student ID Proof-of-Burn Script}}\\
+\textit{Script Hex}: \texttt{6a067762627a3734}\\
+We can add data to the blockchain by immediately invalidating the script, allowing the remainder of the script to be interpreted as pure data.
+The first byte, \texttt{6a}, is the \texttt{OP\_RETURN} word. This actually invalidates the script, so the remainder of the script is not treated as a transaction.
+The next byte, \text{06}, is the number of bytes that we will push onto the stack next---``wbbz74'' is 6 characters long (6 bytes when ASCII encoded), so this is just 6. 
+The remainder of the script, \texttt{7762627a3734}, is the ASCII encoded ``wbbz74'', which will be interpreted on the blockchain as pure data.
+
 \end{enumerate}
 
 \section*{Task 3 - A Wise Investment?}
@@ -90,7 +131,7 @@ Hashed = SHA256(SK($G$)) = de9734e60820253cc47281d56b3e9c20d749c34f353e497000e82
 % Justify your stance as far as possible.
 % (I am not actually going to judge your investment advice, but rather whether you have considered all the different factors, suitably evaluated them and come to a coherent conclusion.)
 
-400-500 WORDS ABOUT WHICH IS THE MOST WISE INVESTMENT? dfkjsdf df sdfk sdfkj sdfkj sdfkj sdfkj sdfkj sdfkj sdfkj sdfkj sdfkjs dfksjd fksjd f
+400-500 WORDS ABOUT WHICH IS THE MOST WISE INVESTMENT? Easy stuff.
 
 
 \end{document}
