@@ -39,9 +39,9 @@
 
 \begin{enumerate}
 \item \textit{User ID}: \texttt{wbbz74}
-\item \textit{Block hash target}: \texttt{000003e7fc180000000000000000000000000000000000000000000000000000}
+\item \textit{Block hash target}: 000003e7fc180000000000000000000000000000000000000000000000000000
 \item \textit{Valid nonce}: \texttt{3856645}
-\item \textit{Number of double hashes}: \texttt{3856645}\\\textit{Time taken}:  \texttt{103.41s}
+\item \textit{Number of double hashes}: \texttt{3856645}\\\textit{Time taken}: 103.41s
 \item 
 \textit{Time to mine at initial difficulty of $1$}\\
 Difficulty ($D$) 0.001 takes \texttt{103.41s}\\
@@ -55,7 +55,27 @@ $\implies \frac{103410}{60\times60\times24}=8.92266\times10^{9}$ days\\
 $\implies \frac{8922665600.88}{365.25}=24,428,927.04$ years\\
 $\implies \frac{24428927.04}{1000}=24,428.9$ millenia.\\
 
+\item \textit{ECDSA Public Key}: 14afbb92502c9294f19be099ac3fe51f8ea1c943e36a06c43b096864d8871\\
+45b55e87f1a01b1b9275bcc9d528a2829a774ec6de06dfaed72933ced851105f3ba
+
+\item \textit{Hello World Signature}: acd855318df6ebb70e4c956caad1c7df1a3395c2ead557e6ec304ced9\\ 038037aa83e79ab1bb80ca3b912ea2806c67cc387301f1530e730834bb3213cf55b70d6
+
+\item \textit{Signing Key ($SK$)}: f3fdb06bc3e08e4d97849c7a599d78d5991a629cd446ecef25f8ec7a80adc657
+
+\item \textit{Hit Value}:\\
+Effective balance ($E$) = 74\\
+Base target ($T_B$) = 1229782938247303 (from prev. block)\\
+Time since last block ($t$) = 1385656125\\
+New Target = $E\times T_B\times t=$ 684ebf8cccccc24519a66e\\
+Previous generation signature ($G$) = 9737957703d4eb54efdff91e15343266123c5f15aaf033\\
+292c9903015af817f1\\
+Signed $G$ = SK($G$) = aa084cddc3d64a4425af1c1b6e4c41c0b9dd60176e41b7134bc3eb87de\\
+25f9411f83eddd7031f7048a47c5d0bfc4fdf268d6c7fd4eb41f72e65933ba8c453008\\
+Hashed = SHA256(SK($G$)) = de9734e60820253cc47281d56b3e9c20d749c34f353e497000e8238eaa45cd55\\
+\textbf{Hit Value} = de9734e60820253c
+
 \item 
+
 \end{enumerate}
 
 \section*{Task 2 - bitcoin-testnet}

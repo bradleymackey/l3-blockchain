@@ -1,5 +1,6 @@
 import hashlib
-import ecdsa
+from ecdsa import SigningKey, VerifyingKey, SECP256k1
+import time
 
 # An the previous block header - do not change any fields
 previous_block_header = {
@@ -27,6 +28,39 @@ previous_block_header = {
 }
 
 # you should edit the effective balance to be the last two digits from your user id
-effective_balance = 75
+effective_balance = 74
 
+# create keys using the bitcoin curve alg
+# sk = SigningKey.generate(SECP256k1)
+# print(f"private: {sk.to_string().hex()}")
+# vk = sk.get_verifying_key()
+# print(f"public: {vk.to_string().hex()}")
 
+# use pre-existing signing keys so we know they can't change
+sk_string = "f3fdb06bc3e08e4d97849c7a599d78d5991a629cd446ecef25f8ec7a80adc657"
+sk = SigningKey.from_string(bytes.fromhex(sk_string), SECP256k1)
+vk_string = "14afbb92502c9294f19be099ac3fe51f8ea1c943e36a06c43b096864d887145b55e87f1a01b1b9275bcc9d528a2829a774ec6de06dfaed72933ced851105f3ba"
+vk = VerifyingKey.from_string(bytes.fromhex(vk_string), SECP256k1)
+
+# validate keypair
+# signature = sk.sign(b"Hello World")
+# print(f"signature: {signature.hex()}")
+# assert vk.verify(signature, b"Hello World")
+
+base_target = int(previous_block_header['baseTarget'])
+block_timestamp = int(previous_block_header['timestamp'])
+time_since_block = int(time.time()) - block_timestamp
+
+target = base_target * time_since_block * effective_balance
+print(f"target cal: {base_target} * {time_since_block} * {effective_balance}")
+print(f"target: {target:x}")
+
+prev_gen_signature = previous_block_header['generationSignature']
+print(f"prev signature: {prev_gen_signature}")
+gen_signature = sk.sign(bytes.fromhex(prev_gen_signature))
+print(f"signed: {gen_signature.hex()}")
+gen_hash = hashlib.sha256(gen_signature).digest()
+print(f"hashed: {gen_hash.hex()}")
+
+hit_bytes = gen_hash[:8]
+print(f"hitval: {hit_bytes.hex()}")
