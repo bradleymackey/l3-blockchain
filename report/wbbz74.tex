@@ -89,7 +89,7 @@ Hashed = SHA256(SK($G$)) = \texttt{\seqsplit{de9734e60820253cc47281d56b3e9c20d74
 
 \end{enumerate}
 
-\section*{Task 2 - bitcoin-testnet}
+\section*{Task 2 - Transactions \& bitcoin-testnet}
 
 \begin{enumerate}
 \item User ID: \texttt{wbbz74}
@@ -101,12 +101,20 @@ Hashed = SHA256(SK($G$)) = \texttt{\seqsplit{de9734e60820253cc47281d56b3e9c20d74
 \end{enumerate}
 \item 
 \begin{enumerate}
-\item This is a transaction with 2 inputs and 3 outputs. One of the outputs is a basic zero-value data transaction, making use of the \texttt{OP\_RETURN} word to ensure the output can never be redeemed. The 2 inputs, as well as the 2 remaining outputs, use a Pay-to-Public-Key Hash (P2PKH) scheme for transferring coins---this can be identified as all the addresses begin with the number \texttt{1}. The inputs prove to the blockchain they are in control of the private keys associated with the previous transaction that sent them the coins by providing a signature---derived from their private key---and their public key. At the end of execution of the script, if the signatures are valid, the stack terminates with \texttt{TRUE}. This allows the inputs to be sent successfully. The recipients, also using P2PKH, provide a script which will allow them to later redeem coins in a transaction block, given they are in posession of the private key for the recipient address. This script is of the form \texttt{OP\_DUP} \texttt{OP\_HASH160} \textit{hashedPublicKey} \texttt{OP\_EQUALVERIFY} \texttt{OP\_CHECKSIG}.
-\item trans 2
-\item trans 3
+
+\item This is a transaction with 2 inputs and 3 outputs. One of the outputs is a basic zero-value data transaction, making use of the \texttt{OP\_RETURN} word to ensure the output can never be redeemed, placing some arbitrary data into the blockchain. 
+The 2 inputs, as well as the 2 remaining outputs, use a Pay-to-Public-Key Hash (P2PKH) scheme for transferring coins---this can be identified as all the addresses begin with the number \texttt{1}. 
+The inputs prove to the blockchain they are in control of the private keys associated with the previous transaction that sent them the coins by providing a signature---derived from their private key---and their public key. 
+At the end of execution of the script, if the signatures are valid, the stack terminates with \texttt{TRUE}. This allows the inputs to be sent successfully. 
+The recipients, also using P2PKH, provide a script which will allow them to later redeem coins in a transaction block, given they are in posession of the private key for the recipient address. This scriptPubKey (the script used to lock the Bitcoins) is of the form: \texttt{OP\_DUP} \texttt{OP\_HASH160} \textit{hashedPublicKey} \texttt{OP\_EQUALVERIFY} \texttt{OP\_CHECKSIG}.
+
+\item This is a simple transaction with 1 input and 2 outputs. The input uses a P2PKH scheme similar to the previous transaction. One of our outputs also uses P2PKH, but the other uses Pay-to-Script-Hash (P2SH)---which can be identified as the address begins with a \texttt{3}. This differs from most other standard scripts available on the Bitcoin network as it allows for any arbitrarily complex script to take constant space on the blockchain, taking only 23 bytes. As the Bitcoin is being sent to a P2SH scheme, little effort is required, the sender only has to check the hash of what is otherwise a very long script (for example, this could be a large multi-sig transaction, but we are unaware of this). P2SH's scriptPubKey is of the (much shorter) form: \texttt{OP\_HASH160} \textit{hashedScript} \texttt{OP\_EQUAL}.
+
+\item This is a transaction with 2 inputs and 3 outputs. One of the outputs is a zero-value data transaction. One of the inputs and outputs use P2PKH. This transaction also includes an input and output using Pay-to-Multisig (P2MS). These have the same requirement of requiring only 1 possible signature for 3 possible public keys, enabling 3 keyholders to exist, but only 1 of these is needed to authorise the sending of coins. Focusing on the input, we see the scriptPubKey is of the form: \texttt{OP\_1} \textit{pubKey1} \textit{pubKey2} \textit{pubKey3} \texttt{OP\_3} \texttt{OP\_CHECKMULTISIG}. The scriptSig (script used to unlock the coins, to be sent in a transaction) is of the form: \texttt{OP\_0} \textit{signature}. It is within this script we see the single signature required in order to send the previously locked Bitcoins. The reason for the \texttt{OP\_0} before the signature is due to the well known bug in \texttt{OP\_CHECKMULTISIG}, where the signature extraction variable (\texttt{OP\_1} in our case) will consume 1 more input than stated. Therefore, we pad the stack with a dummy `\texttt{OP\_0}' to prevent this function consuming data it is not supposed to.
+
 \end{enumerate}
 
-\item \textit{Bitcoin Testnet Address}: mjLjznCbyKuGJ5xuz7Wo1Es3qXHoxoDXgo
+\item \textit{Bitcoin Testnet Address}: \texttt{mjLjznCbyKuGJ5xuz7Wo1Es3qXHoxoDXgo}
 
 \item \textbf{\textit{100 Satoshi Transaction}}\\
 \textit{TX ID}: \texttt{\seqsplit{74b5486e061ac680cde0f132b0dec6c5010d2dee8da3a2856d680fcf5bf41c37}}\\
