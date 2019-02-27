@@ -50,7 +50,7 @@ assert vk.to_string().hex() == vk_string
 
 base_target = int(previous_block_header['baseTarget'])
 block_timestamp = int(previous_block_header['timestamp'])
-time_since_block = 90 # Nxt's avg block time is 1.5 mins
+time_since_block = 90
 
 target = base_target * time_since_block * effective_balance
 print(f"target cal: {base_target} * {time_since_block} * {effective_balance}")

@@ -71,21 +71,23 @@ $\implies \frac{24428927.04}{1000}=24,428.9$ millenia.\\
 
 \item \textit{Hello World Signature}: \texttt{\seqsplit{acd855318df6ebb70e4c956caad1c7df1a3395c2ead557e6ec304ced9038037aa83e79ab1bb80ca3b912ea2806c67cc387301f1530e730834bb3213cf55b70d6}}
 
-\item \textit{Signing Key ($SK$)}: \texttt{\seqsplit{f3fdb06bc3e08e4d97849c7a599d78d5991a629cd446ecef25f8ec7a80adc657}}
+\item \textit{Signed previous Generation Signature ($SK(G)$)}: \texttt{\seqsplit{aa084cddc3d64a4425af1c1b6e4c41c0b9dd60176e41b7134bc3eb87de25f9411f83eddd7031f7048a47c5d0bfc4fdf268d6c7fd4eb41f72e65933ba8c453008}}
 
-% WAIT FOR MAGNUS
 \item \textbf{\textit{Hit Value}}\\
-Effective balance ($E$) = 74\\
-Base target ($T_B$) = 1229782938247303 (from prev. block)\\
-Time since last block ($t$) = 60 (Nxt block time is 1 min)\\
-New Target = $E\times T_B\times t=$ \texttt{684ebf8cccccc24519a66e}\\
-Previous generation signature ($G$) = \texttt{\seqsplit{9737957703d4eb54efdff91e15343266123c5f15aaf033292c9903015af817f1}}\\
-Signed $G$ = SK($G$) = \texttt{\seqsplit{aa084cddc3d64a4425af1c1b6e4c41c0b9dd60176e41b7134bc3eb87de25f9411f83eddd7031f7048a47c5d0bfc4fdf268d6c7fd4eb41f72e65933ba8c453008}}\\
-Hashed = SHA256(SK($G$)) = \texttt{\seqsplit{de9734e60820253cc47281d56b3e9c20d749c34f353e497000e8238eaa45cd55}}\\
-\textbf{Hit Value} = de9734e60820253c
+SHA256(SK($G$)) = \texttt{\seqsplit{de9734e60820253cc47281d56b3e9c20d749c34f353e497000e8238eaa45cd55}}\\
+\textbf{Hit Value} = \texttt{\seqsplit{de9734e60820253c}}
 
-% WAIT FOR MAGNUS
-\item \textbf{\textit{Time to forge new block}}
+\item \textbf{\textit{Time to forge new block}}\\
+Effective balance ($E$) = 74\\
+Base target ($T_B$) = 1229782938247303\\
+Time since last block ($t$) = $t$ (to determine)\\
+New Target = $E\times T_B\times t=91003937430300422t$\\
+\\
+Block can be forged when hit value is less than target.\\
+Hit Value (decimal) = 16039346760486757692\\
+$\therefore t=\frac{16039346760486757692}{91003937430300422}=176.25$ (2 d.p.)\\
+\textbf{Block can be forged after 176.25 seconds.}
+
 
 \end{enumerate}
 
