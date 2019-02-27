@@ -44,28 +44,28 @@
 \author{Bradley Mackey}
 \maketitle
 
-Please be aware some of the hashes have line breaks in strange places---do not miss the odd wrapped character on the next line.
+Please be aware that when copying and pasting hashes broken across multiple lines, \textbf{the pasted output may include a space character at the line break}, please account for this.
 
 
 \section*{Task 1 - Mining Puzzles}
 
 \begin{enumerate}
-\item \textit{User ID}: \texttt{wbbz74}
+\item \textit{User ID}: \textbf{\texttt{wbbz74}}
 \item \textit{Block hash target}: \texttt{\seqsplit{000003e7fc180000000000000000000000000000000000000000000000000000}}
-\item \textit{Valid nonce}: \texttt{3856645}
-\item \textit{Number of double hashes}: \texttt{3856645}\\\textit{Time taken}: 103.41s
+\item \textit{Valid nonce}: \textbf{\texttt{3856645}}
+\item \textit{Number of double hashes}: \texttt{3856645}\\\textit{Time taken}: \textbf{103.41s}
 \item 
 \textit{Time to mine at initial difficulty of $1$}\\
 Difficulty ($D$) 0.001 takes \texttt{103.41s}\\
 $D=1 \implies 103.41\times{\frac{1}{0.001}}=103,410$ seconds\\
 $\implies \frac{103410}{60}=1,723.5$ minutes\\
-$\implies \frac{1723.5}{60}=28.72$ hours.\\
+$\implies \frac{1723.5}{60}=$ \textbf{28.72 hours.}\\
 \\
 \textit{Time to mine at peak 2018 difficulty of $7,454,968,648,263$}\\
 $D=7454968648263 \implies 103.41\times{\frac{7454968648263}{0.001}}=7.70918\times10^{14}$ seconds\\
 $\implies \frac{7.70918\times10^{14}}{60\times60\times24}=8.92266\times10^{9}$ days\\
 $\implies \frac{8.92266\times10^{9}}{365.25}=24,428,927.04$ years\\
-$\implies \frac{24428927.04}{1000}=24,428.9$ millenia.\\
+$\implies \frac{24428927.04}{1000}=$ \textbf{24,428.9 millenia.}\\
 
 \item \textit{ECDSA Public Key}: \texttt{\seqsplit{14afbb92502c9294f19be099ac3fe51f8ea1c943e36a06c43b096864d887145b55e87f1a01b1b9275bcc9d528a2829a774ec6de06dfaed72933ced851105f3ba}}
 
@@ -75,7 +75,7 @@ $\implies \frac{24428927.04}{1000}=24,428.9$ millenia.\\
 
 \item \textbf{\textit{Hit Value}}\\
 SHA256(SK($G$)) = \texttt{\seqsplit{de9734e60820253cc47281d56b3e9c20d749c34f353e497000e8238eaa45cd55}}\\
-\textbf{Hit Value} = \texttt{\seqsplit{de9734e60820253c}}
+Hit Value (first 8 bytes) = \textbf{\texttt{\seqsplit{de9734e60820253c}}}
 
 \item \textbf{\textit{Time to forge new block}}\\
 Effective balance ($E$) = 74\\
