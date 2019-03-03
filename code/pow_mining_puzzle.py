@@ -42,7 +42,7 @@ while True:
     # update the nonce
     example_block_header['nonce'] = nonce
     # progress updates
-    if nonce % 25000 == 0:
+    if nonce % 100000 == 0:
         print("nonce", nonce)
 
     # Simplified conversion of block header into bytes:
