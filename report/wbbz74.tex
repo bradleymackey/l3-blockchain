@@ -71,11 +71,11 @@ $\implies \frac{24428927.04}{1000}=$ \textbf{24,428.9 millenia.}\\
 
 \item \textit{Hello World Signature}: \texttt{\seqsplit{acd855318df6ebb70e4c956caad1c7df1a3395c2ead557e6ec304ced9038037aa83e79ab1bb80ca3b912ea2806c67cc387301f1530e730834bb3213cf55b70d6}}
 
-\item \textit{Signed previous Generation Signature ($SK(G)$)}: \texttt{\seqsplit{aa084cddc3d64a4425af1c1b6e4c41c0b9dd60176e41b7134bc3eb87de25f9411f83eddd7031f7048a47c5d0bfc4fdf268d6c7fd4eb41f72e65933ba8c453008}}
+\item \textit{Signed previous Generation Signature ($SK(G)$)}: \texttt{\seqsplit{262ebf16d77c247020ad0b37ac133475c50cf273c81b592370be51fcca05ee1b68f4dd5cded105bf7ea4e3823dea2766f0c46452177805c39207371192184fd7}}
 
 \item \textbf{\textit{Hit Value}}\\
-SHA256(SK($G$)) = \texttt{\seqsplit{de9734e60820253cc47281d56b3e9c20d749c34f353e497000e8238eaa45cd55}}\\
-Hit Value (first 8 bytes) = \textbf{\texttt{\seqsplit{de9734e60820253c}}}
+SHA256(SK($G$)) = \texttt{\seqsplit{0474501e05347f67cf3169f1ac64638c460252e91b7c8f9b1aa880d593754455}}\\
+Hit Value (first 8 bytes) = \textbf{\texttt{\seqsplit{0474501e05347f67}}}
 
 \item \textbf{\textit{Time to forge new block}}\\
 Effective balance ($E$) = 74\\
@@ -84,9 +84,12 @@ Time since last block ($t$) = $t$ (to determine)\\
 New Target = $E\times T_B\times t=91003937430300422t$\\
 \\
 Block can be forged when hit value is less than target.\\
-Hit Value (decimal) = 16039346760486757692\\
-$\therefore t=\frac{16039346760486757692}{91003937430300422}=176.25$ (2 d.p.)\\
-\textbf{Block can be forged after 176.25 seconds.}
+Hit Value (decimal) = 320969563316715367\\
+$\therefore t=\frac{320969563316715367}{91003937430300422}=3.527$ (3 d.p.)\\
+\textbf{Block can be forged after 3.527 seconds.}\\
+\begin{small}
+As the signature varies each time the previous signature is signed, this value will vary, as the hit value varies. After a few seconds of trying values, this was the shortest value I was able to find. Finding an optimal signature and then using this value to forge the block is optimal as it means that more block rewards will able to be claimed.
+\end{small}
 
 
 \end{enumerate}

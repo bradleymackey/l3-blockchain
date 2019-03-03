@@ -27,8 +27,11 @@ previous_block_header = {
   "timestamp": 165541326
 }
 
+print()
+
 # you should edit the effective balance to be the last two digits from your user id
 effective_balance = 74
+print(f"effective bal 'wbbz74' -> '{effective_balance}'")
 
 # create keys using the bitcoin curve alg
 # sk = SigningKey.generate(SECP256k1)
@@ -43,18 +46,18 @@ vk_string = "14afbb92502c9294f19be099ac3fe51f8ea1c943e36a06c43b096864d887145b55e
 vk = sk.get_verifying_key()
 assert vk.to_string().hex() == vk_string
 
+print(f"signing key: {sk_string}")
+print(f"verifying key: {vk_string}")
+
+print()
+
 # validate keypair
-# signature = sk.sign(b"Hello World")
-# print(f"signature: {signature.hex()}")
-# assert vk.verify(signature, b"Hello World")
+print("Signing `Hello World`")
+signature = sk.sign(b"Hello World")
+print(f"signature: {signature.hex()}")
+assert vk.verify(signature, b"Hello World")
 
-base_target = int(previous_block_header['baseTarget'])
-block_timestamp = int(previous_block_header['timestamp'])
-time_since_block = 90
-
-target = base_target * time_since_block * effective_balance
-print(f"target cal: {base_target} * {time_since_block} * {effective_balance}")
-print(f"target: {target:x}")
+print()
 
 prev_gen_signature = previous_block_header['generationSignature']
 print(f"prev signature: {prev_gen_signature}")
@@ -66,3 +69,17 @@ print(f"hashed: {gen_hash.hex()}")
 
 hit_bytes = gen_hash[:8]
 print(f"hitval: {hit_bytes.hex()}")
+
+base_target = int(previous_block_header['baseTarget'])
+block_timestamp = int(previous_block_header['timestamp'])
+time_since_block = 1
+
+target = base_target * effective_balance
+print(f"target cal: {base_target} * {effective_balance}")
+print(f"target: {target:x} * t")
+hit_int = int.from_bytes(hit_bytes, "big")
+time_forge = hit_int/target
+print(f"can forge block in {time_forge:.3f} seconds")
+print("please be aware this varies depending on the signature of the previous block signature")
+
+print()
