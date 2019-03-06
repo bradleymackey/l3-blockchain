@@ -1,4 +1,5 @@
 \documentclass[11pt]{article}
+\renewcommand{\familydefault}{\sfdefault}
 
 % Make margins smaller
 \usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
@@ -75,20 +76,20 @@ $\implies \frac{24428927.04}{1000}=$ \textbf{24,428.9 millenia.}\\
 
 \item \textbf{\textit{Hit Value}}\\
 SHA256(SK($G$)) = \texttt{\seqsplit{0474501e05347f67cf3169f1ac64638c460252e91b7c8f9b1aa880d593754455}}\\
-Hit Value (first 8 bytes) = \textbf{\texttt{\seqsplit{0474501e05347f67}}}
+$\therefore$ Hit Value (first 8 bytes) = \textbf{\texttt{\seqsplit{0474501e05347f67}}}
 
 \item \textbf{\textit{Time to forge new block}}\\
 Effective balance ($E$) = 74\\
 Base target ($T_B$) = 1229782938247303\\
 Time since last block ($t$) = $t$ (to determine)\\
-New Target = $E\times T_B\times t=91003937430300422t$\\
+$\therefore$ New Target = $E\times T_B\times t=91003937430300422\times{t}$\\
 \\
 Block can be forged when hit value is less than target.\\
 Hit Value (decimal) = 320969563316715367\\
 $\therefore t=\frac{320969563316715367}{91003937430300422}=3.527$ (3 d.p.)\\
-\textbf{Block can be forged after 3.527 seconds.}\\
+$\therefore$ \textbf{Block can be forged after 3.527 seconds.}\\
 \begin{small}
-As the signature varies each time the previous signature is signed, this value will vary, as the hit value varies. After a few seconds of trying values, this was the shortest value I was able to find. Finding an optimal signature and then using this value to forge the block is optimal as it means that more block rewards will able to be claimed.
+As the signature varies each time the previous signature is signed, this value will vary as the hit value varies. After a few seconds of trying values, this was the shortest value I was able to find. Finding an optimal signature and then using this value to forge the block is optimal as it means that more block rewards will able to be claimed.
 \end{small}
 
 
