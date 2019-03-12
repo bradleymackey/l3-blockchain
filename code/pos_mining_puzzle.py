@@ -39,7 +39,7 @@ print(f"effective bal 'wbbz74' -> '{effective_balance}'")
 # vk = sk.get_verifying_key()
 # print(f"public: {vk.to_string().hex()}")
 
-# use pre-existing signing keys so we know they can't change
+######### IMPORT KEYPAIR
 sk_string = "f3fdb06bc3e08e4d97849c7a599d78d5991a629cd446ecef25f8ec7a80adc657"
 sk = SigningKey.from_string(bytes.fromhex(sk_string), SECP256k1)
 vk_string = "14afbb92502c9294f19be099ac3fe51f8ea1c943e36a06c43b096864d887145b55e87f1a01b1b9275bcc9d528a2829a774ec6de06dfaed72933ced851105f3ba"
@@ -51,11 +51,11 @@ print(f"verifying key: {vk_string}")
 
 print()
 
-# validate keypair
-print("Signing `Hello World`")
-signature = sk.sign(b"Hello World")
+######### VALIDATE KEYPAIR
+print("Signing `Hello world`")
+signature = sk.sign(b"Hello world")
 print(f"signature: {signature.hex()}")
-assert vk.verify(signature, b"Hello World")
+assert vk.verify(signature, b"Hello world")
 
 print()
 
